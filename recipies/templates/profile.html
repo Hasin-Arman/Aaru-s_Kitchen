@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<section class="section-intro padding-y-sm">
+	<!-- ========================= SECTION MAIN END// ========================= -->
+	
+	<!-- ========================= SECTION  ========================= -->
+	<section class="section-name padding-y-sm">
+	<div class="container">
+	<header class="section-heading">
+		<h3 class="section-title">Profile</h3>
+	</header><!-- sect-heading -->
+	
+		
+	<div class="row">
+		{% for item in items %}
+		<div class="col-md-3">
+			<div class="card card-product-grid">
+				<img src="{{item.image.url}}">
+				<figcaption class="info-wrap">
+                    <h4>{{item.title}}</h4>
+					<p>{{item.instructions}}</p>
+                    <a href="{% url 'updatepage' pk=item.id %}"><button class="btn btn-info btn-sm">Update</button></a>
+                     <!-- price-wrap.// -->
+				</figcaption>
+			</div>
+		</div> <!-- col.// -->
+		{% endfor %}
+	</div> <!-- row.// -->
+	</div><!-- container // -->
+	</section>
+{% endblock body %}
