@@ -25,5 +25,4 @@ urlpatterns = [
     path('',views.home,name="home"),
     path('account/',include('accounts.urls')),
     path('recipy/',include('recipies.urls')),
-    # path('category/',include('category.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,96 @@
+{% extends 'base.html' %} {% block body %}
+
+<!-- ========================= SECTION INTRO END// ========================= -->
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+  <div class="container">
+    <div class="row">
+      <aside class="col-md-3">
+        <div class="card">
+          <article class="filter-group">
+            <header class="card-header">
+              <a
+                href="#"
+                data-toggle="collapse"
+                data-target="#collapse_1"
+                aria-expanded="true"
+                class=""
+              >
+                <i class="icon-control fa fa-chevron-down"></i>
+                <h6 class="title">Categories</h6>
+              </a>
+            </header>
+            <div class="filter-content collapse show" id="collapse_1" style="">
+              <div class="card-body">
+                <ul class="list-menu">
+                  {% for i in category %}
+                  <li><a href="{% url 'blogs' i.slug %}">{{i.category_name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <!-- card-body.// -->
+            </div>
+          </article>
+          <!-- filter-group  .// -->
+        </div>
+        <!-- card.// -->
+      </aside>
+      <!-- col.// -->
+      <main class="col-md-9">
+        <!-- sect-heading -->
+        <div class="row">
+          {% for item in items %}
+          <div class="col-md-3">
+            <div class="card card-product-grid">
+              <img src="{{item.image.url}}" />
+              <figcaption class="info-wrap">
+                <h5>{{item.title}}</h5>
+                <p>{{item.instructions}}</p>
+                <!-- price-wrap.// -->
+              </figcaption>
+            </div>
+          </div>
+          <!-- col.// -->
+          {% endfor %}
+        </div>
+        <!-- row end.// -->
+
+        {% comment %}
+        <nav class="mt-4" aria-label="Page navigation sample">
+          <ul class="pagination">
+            {% if products.has_previous %}
+            <li class="page-item">
+              <a
+                class="page-link"
+                href="?page={{products.previous_page_number}}"
+                >Previous</a
+              >
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <a class="page-link">Previous</a>
+            </li>
+            {% endif %} {% for num in products.paginator.page_range %}
+            <li class="page-item active">
+              <a class="page-link" href="?page={{num}}">{{num}}</a>
+            </li>
+            {% endfor %} {% if products.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{products.next_page_number}}"
+                >Next</a
+              >
+            </li>
+            {% else %}
+            <li class="page-item disabled"><a class="page-link">Next</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+        {% endcomment %}
+      </main>
+      <!-- col.// -->
+    </div>
+  </div>
+  <!-- container .//  -->
+</section>
+{% endblock body %}

@@ -3,11 +3,12 @@ from django.contrib.auth.models import User
 # Create your models here.
 meals=[
     ('Dessert','Dessert'),
-    ('Main_Course','Main_Course'),
+    ('Main Course','Main Course'),
     ('Appetizer','Appetizer'),
     
 ]
 class recipyModel(models.Model):
+    user=models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     title=models.CharField(max_length=100)
     slug=models.SlugField(max_length=100)
     ingredients=models.TextField()

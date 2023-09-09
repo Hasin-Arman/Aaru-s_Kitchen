@@ -3,4 +3,4 @@ from .models import recipyModel
 class recipyForm(forms.ModelForm):
     class Meta:
         model=recipyModel
-        exclude = ['slug']
+        fields=['title','ingredients','instructions','image','category']
