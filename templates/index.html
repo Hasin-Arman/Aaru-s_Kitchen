@@ -26,8 +26,11 @@
 			<div class="card card-product-grid">
 				<a href="" class="img-wrap"> <img src="{{item.image.url}}"></a>
 				<figcaption class="info-wrap">
-					<a href="./product-detail.html" class="title">{{item.title}}</a>
-					<div class="price mt-1">{{item.instructions}}</div> <!-- price-wrap.// -->
+					<h5>Name:{{item.title}}</h5>
+					<p><span class="font-weight-bold">Instructions</span>:{{item.instructions}}</p>
+					<p><span class="font-weight-bold">Ingredients</span>:{{item.ingredients}}</p>
+					{% comment %} <div class="price mt-1"></div> <!-- price-wrap.// -->
+					<div class="price mt-1">{{item.ingredients}}</div> <!-- price-wrap.// --> {% endcomment %}
 				</figcaption>
 			</div>
 		</div> <!-- col.// -->

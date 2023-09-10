@@ -82,15 +82,16 @@
                 {% csrf_token %}
                 <div class="input-group w-100">
                   <input
+                    name='value'
                     type="text"
                     class="form-control"
-                    style="width: 60%"
+                    style="width: 50%"
                     placeholder="Search"
                   />
 
                   <div class="input-group-append">
-                    <a href="{% url 'searchfood' %}"><button class="btn btn-primary" type="submit">
-                      <i class="fa fa-search"></i></a>
+                   <button class="btn btn-primary" type="submit">
+                      <i class="fa fa-search"></i>
                     </button>
                   </div>
                 </div>

@@ -42,3 +42,4 @@ def blog_view(request,category_slug=None):
     else:
         items=recipyModel.objects.all()
         return render(request, 'blogs.html',{'items':items,'category':category})
+
