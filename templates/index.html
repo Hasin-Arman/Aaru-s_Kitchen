@@ -1,41 +1,67 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block body %}
+{% extends 'base.html' %} {% load static %} {% block body %}
 <section class="section-intro padding-y-sm">
-	<div class="container">
-	
-	<div class="intro-banner-wrap">
-		<img src="{% static 'images/banners/food-min.png' %}" class="img-fluid rounded">
-	</div>
-	
-	</div> <!-- container //  -->
-	</section>
-	<!-- ========================= SECTION MAIN END// ========================= -->
-	
-	<!-- ========================= SECTION  ========================= -->
-	<section class="section-name padding-y-sm">
-	<div class="container">
-	<header class="section-heading">
-		<h3 class="section-title">All Shared Recipies</h3>
-	</header><!-- sect-heading -->
-	
-		
-	<div class="row">
-		{% for item in items %}
-		<div class="col-md-3">
-			<div class="card card-product-grid">
-				<a href="" class="img-wrap"> <img src="{{item.image.url}}"></a>
-				<figcaption class="info-wrap">
-					<h5>Name:{{item.title}}</h5>
-					<p><span class="font-weight-bold">Instructions</span>:{{item.instructions}}</p>
-					<p><span class="font-weight-bold">Ingredients</span>:{{item.ingredients}}</p>
-					{% comment %} <div class="price mt-1"></div> <!-- price-wrap.// -->
-					<div class="price mt-1">{{item.ingredients}}</div> <!-- price-wrap.// --> {% endcomment %}
-				</figcaption>
-			</div>
-		</div> <!-- col.// -->
+  <div class="container">
+    <div class="intro-banner-wrap">
+      <img
+        src="{% static 'images/banners/food-min.png' %}"
+        class="img-fluid rounded"
+      />
+    </div>
+  </div>
+  <!-- container //  -->
+</section>
+<!-- ========================= SECTION MAIN END// ========================= -->
+
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name padding-y-sm">
+  <div class="container">
+    <header class="section-heading">
+      <h3 class="section-title">All Shared Recipies</h3>
+    </header>
+    <!-- sect-heading -->
+
+    <div class="row">
+      {% for item in items %}
+      <div class="col-md-3">
+        <div class="card card-product-grid">
+          <a href="" class="img-wrap"> <img src="{{item.image.url}}" /></a>
+          <figcaption class="info-wrap">
+            <h5>Name:{{item.title}}</h5>
+            <p>
+              <span class="font-weight-bold">Instructions</span
+              >:{{item.instructions}}
+            </p>
+            <p>
+              <span class="font-weight-bold">Ingredients</span
+              >:{{item.ingredients}}
+            </p>
+          </figcaption>
+        </div>
+      </div>
+      <!-- col.// -->
+      {% endfor %}
+    </div>
+    <!-- row.// -->
+  </div>
+  <!-- container // -->
+  <div class="d-flex justify-content-center">
+    <nav class="mt-4" aria-label="Page navigation sample">
+      <ul class="pagination">
+        {% if items.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{items.previous_page_number}}">Previous</a></li>
+        {% else %}
+        <li class="page-item disabled"><a class="page-link">Previous</a></li>
+        {% endif %}
+		{% for i in items.paginator.page_range %}
+		<li class="page-item active"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
 		{% endfor %}
-	</div> <!-- row.// -->
-	</div><!-- container // -->
-	</section>
+        {% if items.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{items.next_page_number}}">Next</a></li>
+        {% else %}
+        <li class="page-item disabled"><a class="page-link">Next</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</section>
 {% endblock body %}
